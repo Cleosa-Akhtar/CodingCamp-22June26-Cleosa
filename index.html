@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Expense &amp; Budget Visualizer</h1>
+      <div id="balance-display">
+        <span class="balance-label">Total: </span><span id="balance-amount">$0.00</span>
+        <button id="theme-toggle" aria-label="Switch to dark mode">🌙 Dark Mode</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="form-section">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+          <label for="item-name">Item Name</label>
+          <input
+            type="text"
+            id="item-name"
+            name="item-name"
+            placeholder="e.g. Grocery shopping"
+          />
+
+          <label for="item-amount">Amount</label>
+          <input
+            type="number"
+            id="item-amount"
+            name="item-amount"
+            min="0.01"
+            step="0.01"
+            placeholder="e.g. 12.50"
+          />
+
+          <label for="item-category">Category</label>
+          <select id="item-category" name="item-category">
+            <option value="">-- Select category --</option>
+          </select>
+
+          <p id="form-error" role="alert"></p>
+
+          <button type="submit" id="add-btn">Add Transaction</button>
+        </form>
+      </section>
+
+      <section id="list-section">
+        <h2>Transactions</h2>
+        <ul id="transaction-list" aria-label="Transaction list"></ul>
+      </section>
+    </main>
+
+    <section id="category-manager-section">
+      <h2>Manage Categories</h2>
+      <ul id="category-list" aria-label="Category list"></ul>
+      <form id="add-category-form">
+        <label for="new-category-name">New Category</label>
+        <input type="text" id="new-category-name" name="new-category-name"
+               maxlength="50" placeholder="e.g. Health" />
+        <p id="category-form-error" role="alert"></p>
+        <button type="submit" id="add-category-btn">Add Category</button>
+      </form>
+    </section>
+
+    <section id="chart-section">
+      <h2>Spending by Category</h2>
+      <canvas id="spending-chart" aria-label="Spending pie chart" role="img"></canvas>
+      <p id="chart-empty-state">No transactions yet. Add one above to see your spending chart.</p>
+    </section>
+
+    <section id="monthly-summary-section">
+      <h2>Monthly Summary</h2>
+      <div id="monthly-summary-content"></div>
+      <p id="monthly-summary-empty" class="hidden">No spending data yet.</p>
+    </section>
+
+    <script defer src="js/app.js"></script>
+  </body>
+</html>
